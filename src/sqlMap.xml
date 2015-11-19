@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap 
+     PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+     "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="User">
+
+	<typeAlias alias="User" type="entity.User" />
+	
+	<insert id="save" parameterClass="User">
+		insert into user
+		values(#username#,#password#,#username#)  
+    </insert>
+
+	<delete id="delete" parameterClass="string">
+		delete from user where username = #username#  
+    </delete>
+
+	<update id="update" parameterClass="User">
+		update user set
+		password=#password#,age=#age# where username=#username#  
+    </update>
+
+	<select id="queryAll" resultClass="User">
+		select * from user  
+    </select>
+
+	<select id="queryByName" resultClass="User" parameterClass="string">
+		select * from user where username = #username#  
+    </select>
+</sqlMap>
